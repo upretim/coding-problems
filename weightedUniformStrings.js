@@ -1,4 +1,5 @@
 // Complete the weightedUniformStrings function below.
+//https://www.hackerrank.com/challenges/weighted-uniform-string/problem
 function weightedUniformStrings(s, queries) {
     let prevValue =0, counter =0;
     let myArr = [];
