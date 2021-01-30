@@ -8,22 +8,15 @@
 
 var maxLengthBetweenEqualCharacters = function(s) {
     let obj = { };
+    let max =0;
     for(let i=0;i<s.length;i++){
         if(obj[s[i]]===undefined){
-            obj[s[i]] = s[i];
             obj[s[i]] = {};
             obj[s[i]]['first'] = i;
             obj[s[i]]['last'] = i;
         }
-        else{
-            obj[s[i]]['last'] = i;     
-        }    
-    }
-   let max =0;
-   for(let i=0;i<s.length;i++){
- 
-       if(obj[s[i]]['last'] -obj[s[i]]['first']>max)    
-       max = obj[s[i]]['last'] -obj[s[i]]['first']
+        else
+            if(i - obj[s[i]]['first']>max)  max = (i -obj[s[i]]['first'])  
     }
     return max; 
 };
