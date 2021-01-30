@@ -12,8 +12,7 @@ function palindromeIndex(s) {
            let checkNextI= (s.charAt(i+1)==s.charAt(j));
            let checkNextJ= (s.charAt(i)==s.charAt(j-1));
            if(checkNextI && checkNextJ){
-                     if(isPalindrome(s,i+1,j)===false && isPalindrome(s,i,j-1)==false)
-                     return -1;
+                     if(isPalindrome(s,i+1,j)===false && isPalindrome(s,i,j-1)==false) return -1;
                      else if (isPalindrome(s,i+1,j)) return i;
                      else if (isPalindrome(s,i,j-1)) return j;                 
                 }
