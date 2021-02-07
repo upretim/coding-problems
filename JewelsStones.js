@@ -14,15 +14,11 @@ var numJewelsInStones = function(J, S) {
     let sHolder = {};
     let count =0;
     for(let i=0;i<S.length;i++){
-        if(sHolder[S[i]]===undefined)
-            sHolder[S[i]] = 1;
-        else
-            sHolder[S[i]]++;
+        if(sHolder[S[i]]===undefined) sHolder[S[i]] = 1;
+        else sHolder[S[i]]++;
     }
     for(let i=0;i<J.length;i++){
-        if(sHolder[J[i]]){
-            count = count + sHolder[J[i]];
-        }
+        if(sHolder[J[i]]) count = count + sHolder[J[i]];
     }
     return count;
 };
