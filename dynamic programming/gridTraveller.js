@@ -5,12 +5,15 @@
 const gridTraveller=(m, n, memo={})=>{
     //memo object
     const key = m +','+ n;
+    const key2 = n +','+ m;
     if(memo[key]) return memo[key];
+    if(memo[key2]) return memo[key2];
     //base case
     if(m==0 || n==0) return 0;
     if(m==1 && n==1) return 1;
-    //recursive logic
+    //recursive logic and storing result
      memo[key] = gridTraveller(m-1,n, memo) + gridTraveller(m,n-1, memo);
+     memo[key2] = memo[key];
      return memo[key];
 }
 
