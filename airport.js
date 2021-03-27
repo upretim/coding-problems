@@ -1,5 +1,6 @@
-//https://www.youtube.com/watch?v=cWNEl4HE2OE
-// this function takes airports a string and routes array as connections
+
+// this function takes airports a string and routes array as connections and checks if two airports are 
+//connected
 
 const airports =['PHX','BKK','OKC','JFK','LAX','MEX','EZE','HEL','LOS','LAP','LIM'];
 const routes =[
