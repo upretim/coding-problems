@@ -48,3 +48,27 @@ function areConnected(airport1, airport2){
 }
 
 console.log(areConnected('PHX','BKK'));
+
+function getShortestDistance(airport){
+    let list = getList(airports, routes);
+    let distance ={};
+    distance[airport] = 0;
+    let visited = new Set();
+    let queue = [airport];
+    
+    while(queue.length){
+        let node = queue.shift();
+        let connectedAirports = list.get(node);
+        for(connectedAirport of connectedAirports){
+            if(!visited.has(connectedAirport)){
+                queue.push(connectedAirport);
+                visited.add(connectedAirport);
+                if(distance[connectedAirport]===undefined){
+                    distance[connectedAirport] = distance[node] +1;
+                    console.log(`Distance of  ${connectedAirport} from  ${airport} is  ${distance[connectedAirport]}`)
+                } 
+            }
+        }
+    }
+}
+getShortestDistance('PHX');
