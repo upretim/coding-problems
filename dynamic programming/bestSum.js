@@ -13,7 +13,7 @@ function bestSum(targetSum, array, memo={}){
     
     for(let num of array){
         let reminder = targetSum - num;
-        let reminderCombination = (reminder, array, memo);
+        let reminderCombination = bestSum(reminder, array, memo);
         if(reminderCombination!==null){
           const combination = [...reminderCombination,num];
           if(shortestLength==null || combination.length < shortestLength.length){

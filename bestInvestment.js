@@ -23,7 +23,7 @@ SCORE: 100 points
  * @returns 
  */
 
-
+/*this is not solution to above problem just an initial attempt*/
 const selectStock = (saving, currentPrice, futurePrice)=>{
      if(saving<=0) return;
     
