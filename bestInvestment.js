@@ -23,27 +23,34 @@ SCORE: 100 points
  * @returns 
  */
 
-/*this is not solution to above problem just an initial attempt*/
-const selectStock = (saving, currentPrice, futurePrice)=>{
-     if(saving<=0) return;
-    
-    let maxPorfit =0;
-    let profit=0;
-     for(let i=0;i<currentPrice.length;i++){
-         if(futurePrice[i] >currentPrice[i]){
-            let newSavings = saving-currentPrice[i];
-            profit = profit + futurePrice[i] - currentPrice[i];
-            if(profit>maxPorfit){
-                maxPorfit = profit;
-            }
-            currentPrice.splice(i,1);
-            futurePrice.splice(i,1);
-            selectStock(newSavings, currentPrice,futurePrice)
-         }
+function getBestInvestment(saving, currentValue, futureValue){
+    let profit =[];
+    for(let i=0;i<currentValue.length;i++){
+        profit[i] = futureValue[i]-currentValue[i];
+    }
 
-     }
-     return maxPorfit;
-
-}
-
-selectStock(250,[175, 133, 109, 210, 97],[200, 125, 128, 228, 133]);
+   let len = currentValue.length;
+   let map = new Map();
+    const bestInvestmnetUtil=(len, investment, profit, saving, index, map)=>{
+        let key = saving + "-"+ index;
+        if(map.has(key)) return map.get(key);
+        if(index==len || saving<=0) return 0;
+        let itemIncluded=0;
+        let itemExcluded =0;
+       
+        if(saving>=investment[index]){
+            itemIncluded = bestInvestmnetUtil(len, investment, profit, saving-investment[index], index+1, map) + profit[index];
+            itemExcluded = bestInvestmnetUtil(len, investment, profit, saving,index+1, map);
+            let result = Math.max(itemIncluded, itemExcluded);
+            map.set(key,result);
+            return result;
+        }
+        else{
+            itemExcluded = bestInvestmnetUtil(len, investment, profit, saving, index+1,map);
+            map.set(key,itemExcluded);
+            return itemExcluded;
+        }
+    }
+   return bestInvestmnetUtil(len, currentValue, profit, saving, 0,map);
+ }
+ console.log(getBestInvestment(250, [175, 133, 109, 210, 97],[200, 125, 128, 228, 133]));
