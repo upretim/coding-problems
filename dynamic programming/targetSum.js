@@ -20,6 +20,25 @@ const canSum=(target, array, memo={})=>{
     return false;
 }
 
+function canSumTabulation(target, array){
+    let table = new Array(target+1).fill(false);
+    table[0] = true;
+    for(let i=0;i<table.length;i++){
+        if(table[i]){
+            for(let value of array){
+                if(i+value<=target) table[i+value] = true;
+            }
+        }
+    }
+  //  console.log(table);
+    return table[target];
+}
+/*
+
 console.log(canSum(7,[4,2]));
 console.log(canSum(7,[4,3]));
 console.log(canSum(300,[7,14]));
+*/
+console.log(canSumTabulation(7,[4,2]));
+console.log(canSumTabulation(7,[4,3]));
+console.log(canSumTabulation(300,[7,14]));
