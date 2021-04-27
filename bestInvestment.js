@@ -14,9 +14,7 @@ currentValue = [175, 133, 109, 210, 97]
 futureValue = [200, 125, 128, 228, 133]
 To maximize profits, the investor should buy stocks at indices 2 and
 4 for an investment of 109 + 97 = 206. At the end of the year the stocks
-Question - 12
-Selecting Stocks
-SCORE: 100 points
+
  * @param {*} saving 
  * @param {*} currentPrice 
  * @param {*} futurePrice 
