@@ -21,7 +21,23 @@ const howsum=(num, array, memo={})=>{
   return null;
 }
 
+const howsumTabulation=(num, array)=>{
+   let arr = new Array(num+1).fill(null);
+   arr[0]=[];
+   for(let i=0;i<arr.length;i++){
+     if(Array.isArray(arr[i])){
+       for(let value of array){
+         if(i+value<=num) arr[i+value] = [...arr[i],value];
+       }
+     }
+   }
+   return arr[num];
+}
 
+console.log(howsumTabulation(7,[5,3,4]));
+console.log(howsumTabulation(7,[2,3]));
+console.log(howsumTabulation(300,[7,14]));
 
+console.log(howsum(7,[5,3,4]));
 console.log(howsum(7,[2,3]));
 console.log(howsum(300,[7,14]));
